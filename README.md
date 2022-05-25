@@ -6,12 +6,12 @@ Sample Django Web App
 ![DB Schema Diagram](static/design/DBSchema.png?raw=true "")
 
 #### Events Diagram
-######Version 1 (Implemented Here)
+#####Version 1 (Implemented Here)
 Assumes that PDF Generation and Upload does not consume much time.
 ![Events Diagram](static/design/EventsDiagramBasic.png?raw=true "")
 
 
-######Version 2 (Asynchronous)
+#####Version 2 (Asynchronous)
 Assumes that PDF Generation and Upload will consume much time and hence it handled asynchronously.
 ![Events Diagram](static/design/EventsDiagram.png?raw=true "")
 Queue is AWS SQS.
