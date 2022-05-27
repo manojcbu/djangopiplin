@@ -46,13 +46,13 @@ class Candidate(models.Model):
     gender = models.CharField(max_length=3, choices=GENDER)
     email = models.EmailField(max_length=254)
     primary_phone = models.TextField(max_length=15)
-    other_phone = models.TextField(max_length=15)
+    other_phone = models.TextField(max_length=15, null=True)
     address = models.TextField()
     longitude = models.FloatField()
     latitude = models.FloatField()
     experience = models.IntegerField()
     resume_status = models.CharField(max_length=10, choices=RESUME_STATUS)
-    resume_path = models.TextField()
+    resume_path = models.TextField(null=True)
 
     # TODO: Add missing check constraints
     class Meta:
