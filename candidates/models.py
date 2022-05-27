@@ -63,17 +63,29 @@ class Candidate(models.Model):
             )
         ]
 
+    def __str__(self):
+        return self.full_name
+
 
 class Specialization(models.Model):
     specialization = models.TextField(max_length=255, choices=SPECIALIZATION, unique=True)
+
+    def __str__(self):
+        return self.specialization
 
 
 class Institute(models.Model):
     institute = models.TextField(max_length=255, choices=INSTITUTE, unique=True)
 
+    def __str__(self):
+        return self.institute
+
 
 class Skill(models.Model):
     skill = models.TextField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.skill
 
 
 class Education(models.Model):
