@@ -17,6 +17,25 @@ RESUME_STATUS = (
     ("FAILED", "Failed")
 )
 
+SPECIALIZATION = (
+    ("Artificial Intelligence", "Artificial Intelligence"),
+    ("Computer-Human Interface", "Computer-Human Interface"),
+    ("Game Design", "Game Design"),
+    ("Networks and Security", "Networks and Security"),
+    ("Computer Graphics", "Computer Graphics"),
+    ("Data Science", "Data Science"),
+    ("Others", "Others")
+)
+
+INSTITUTE = (
+    ("Institute 1", "Institute 1"),
+    ("Institute 2", "Institute 2"),
+    ("Institute 3", "Institute 3"),
+    ("Institute 4", "Institute 4"),
+    ("Institute 5", "Institute 5"),
+    ("Institute 6", "Institute 6")
+)
+
 
 class Candidate(models.Model):
     full_name = models.TextField(max_length=255)
@@ -45,7 +64,27 @@ class Candidate(models.Model):
         ]
 
 
-# class Choice(models.Model):
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-#     choice_text = models.CharField(max_length=200)
-#     votes = models.IntegerField(default=0)
+class Specialization(models.Model):
+    specialization = models.TextField(max_length=255, choices=SPECIALIZATION, unique=True)
+
+
+class Institute(models.Model):
+    institute = models.TextField(max_length=255, choices=INSTITUTE, unique=True)
+
+
+class Skill(models.Model):
+    skill = models.TextField(max_length=255, unique=True)
+
+
+class Education(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    board = models.TextField(max_length=255)
+    level = models.TextField(max_length=16)
+    year_of_passing = models.DateField()
+
+
+class CandidateSkills(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
