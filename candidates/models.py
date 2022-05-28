@@ -6,8 +6,8 @@ models.TextField.register_lookup(Length)
 
 # Choices for Gender Input
 GENDER = (
-    ("M", "Male"),
-    ("F", "Female"),
+    ("Male", "Male"),
+    ("Female", "Female"),
     ("NA", "Prefer Not To Say")
 )
 
@@ -43,7 +43,7 @@ class Candidate(models.Model):
     dob = models.DateField()
     state = models.TextField(max_length=255)
     pin_code = models.TextField(max_length=10)
-    gender = models.CharField(max_length=3, choices=GENDER)
+    gender = models.CharField(max_length=6, choices=GENDER)
     email = models.EmailField(max_length=254)
     primary_phone = models.TextField(max_length=15)
     other_phone = models.TextField(max_length=15, null=True)
@@ -51,7 +51,7 @@ class Candidate(models.Model):
     longitude = models.FloatField()
     latitude = models.FloatField()
     experience = models.IntegerField()
-    resume_status = models.CharField(max_length=10, choices=RESUME_STATUS)
+    resume_status = models.CharField(max_length=10, choices=RESUME_STATUS, default='PENDING')
     resume_path = models.TextField(null=True)
 
     # TODO: Add missing check constraints
