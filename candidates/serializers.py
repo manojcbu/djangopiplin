@@ -53,8 +53,7 @@ class CandidateSerializer(serializers.ModelSerializer):
             "longitude",
             "latitude",
             "experience",
-            "skills",
-            "_skills"
+            "skills"
         )
 
     def create(self, validated_data):
@@ -74,7 +73,6 @@ class CandidateSerializer(serializers.ModelSerializer):
         # Map Skills
         for i in skills:
             skill_obj, _ = Skill.objects.get_or_create(skill=i)
-            print(skill_obj, _)
             candidate.skills.add(skill_obj)
             candidate.save()
 
