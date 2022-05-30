@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from candidates.serializers import CandidateSerializer
+from candidates.serializers import CandidateSerializer, CandidateSerializerReadOnly
 from candidates.models import Candidate
 
 
@@ -9,15 +9,14 @@ from candidates.models import Candidate
 def candidates(request):
     # TODO: Add Pagination
     data = Candidate.objects.all()
-    serializer = CandidateSerializer(data, many=True)
+    serializer = CandidateSerializerReadOnly(data, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
 def create_candidate(request):
-    # TODO: Add Multiple at once
     # TODO: Add remaining fields
-    serializer = CandidateSerializer(data=request.data)
+    serializer = CandidateSerializer(data=request.data, many=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)

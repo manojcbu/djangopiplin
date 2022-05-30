@@ -90,9 +90,9 @@ class Institute(models.Model):
 
 
 class Education(models.Model):
-    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE)
-    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    candidate = models.ForeignKey(Candidate, null=True, on_delete=models.SET_NULL)
+    specialization = models.ForeignKey(Specialization, null=True, on_delete=models.SET_NULL)
+    institute = models.ForeignKey(Institute, null=True, on_delete=models.SET_NULL)
     board = models.TextField(max_length=255)
     level = models.TextField(max_length=16)
     year_of_passing = models.DateField()
