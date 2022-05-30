@@ -33,9 +33,8 @@ class CandidateSerializerReadOnly(serializers.ModelSerializer):
 
 
 class CandidateSerializer(serializers.ModelSerializer):
-    print("############")
+
     skills = serializers.ListField(write_only=True)
-    _skills = SkillSerializer(many=True, read_only=True)
 
     class Meta:
         model = Candidate
