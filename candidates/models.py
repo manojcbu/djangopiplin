@@ -3,7 +3,7 @@ from django.db.models import CheckConstraint, Q
 from django.db.models.functions import Length
 
 models.TextField.register_lookup(Length)
-
+#manojbaddela-cbu-candidates-students-profile Models
 
 class Skill(models.Model):
     skill = models.TextField(max_length=255, unique=True)
@@ -11,15 +11,14 @@ class Skill(models.Model):
     def __str__(self):
         return self.skill
 
-
 class Candidate(models.Model):
-    # Choices for Gender Input
+    #  Gender Input
     GENDER = (
         ("Male", "Male"),
         ("Female", "Female"),
         ("NA", "Prefer Not To Say")
     )
-    # Choices for Resume Status
+    #  Resume Status
     RESUME_STATUS = (
         ("PENDING", "In Queue"),
         ("SUCCESS", "Success"),
@@ -41,7 +40,7 @@ class Candidate(models.Model):
     experience = models.IntegerField()
     resume_status = models.CharField(max_length=10, choices=RESUME_STATUS, default='PENDING')
     resume_path = models.TextField(null=True)
-    skills = models.ManyToManyField(Skill)
+    #skills = models.ManyToManyField(Skill)
 
     # TODO: Add missing check constraints
     class Meta:
